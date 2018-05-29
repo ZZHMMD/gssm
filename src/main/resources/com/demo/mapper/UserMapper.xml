@@ -40,6 +40,6 @@
   </insert>
 
   <update id="updateUserState" parameterType="int" >
-    update user set state=#{state} where id=#{id}
+    update user set state=#{1} where id=#{0}
   </update>
 </mapper>

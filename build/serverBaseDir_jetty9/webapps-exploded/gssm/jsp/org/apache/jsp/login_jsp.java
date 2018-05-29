@@ -70,12 +70,12 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<div class=\"middle-box text-center loginscreen  animated fadeInDown\">\n");
       out.write("  <div style=\"padding-top: 45%; \">\n");
       out.write("    <h3>注册大合集demo</h3>\n");
-      out.write("    <form class=\"m-t\" role=\"form\" action=\"http://www.zi-han.net/theme/hplus/index.html\">\n");
+      out.write("    <form class=\"m-t\" role=\"form\" action=\"/login\">\n");
       out.write("      <div class=\"form-group\">\n");
-      out.write("        <input type=\"email\" class=\"form-control\" placeholder=\"用户名\" required=\"\">\n");
+      out.write("        <input type=\"text\" class=\"form-control\" name=\"username\" placeholder=\"用户名\" required=\"\">\n");
       out.write("      </div>\n");
       out.write("      <div class=\"form-group\">\n");
-      out.write("        <input type=\"password\" class=\"form-control\" placeholder=\"密码\" required=\"\">\n");
+      out.write("        <input type=\"password\" class=\"form-control\" name=\"password\" placeholder=\"密码\" required=\"\">\n");
       out.write("      </div>\n");
       out.write("      <button type=\"submit\" class=\"btn btn-primary block full-width m-b\">登 录</button>\n");
       out.write("      <p class=\"text-muted text-center\"> <a href=\"login.html#\"><small>忘记密码了？</small></a> | <a href=\"register.jsp\">注册一个新账号</a>\n");

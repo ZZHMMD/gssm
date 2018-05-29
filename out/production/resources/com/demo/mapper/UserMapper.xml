@@ -26,7 +26,12 @@
     select * from user where username=#{username,jdbcType=VARCHAR}
   </select>
 
-  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.demo.pojo.User" >
+  <insert id="insert" parameterType="com.demo.pojo.User" >
+
+      <selectKey resultType="Integer" order="AFTER" keyProperty="id">
+          SELECT LAST_INSERT_ID() AS userId
+      </selectKey>
+
       insert into user (nickname, username,
       password, email, state,
       tel, register_date, last_login_date,

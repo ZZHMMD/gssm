@@ -69,16 +69,16 @@ public class UserServiceImpl implements UserService {
             user.setRegisterDate(date);
             user.setState(0);
             //拿到用户注册返回的id
-            auto_id =  userMapper.insert(user);
+            userMapper.insert(user);
             //生成激活码
             String code = UUID.randomUUID().toString().substring(0,5);
             //将激活码存到redis中
-            jedisClientPool.set(USER_ACTIVE_ID+":"+auto_id,code);
-            jedisClientPool.expire(USER_ACTIVE_ID+":"+auto_id,USER_ACTIVE_CODE_EXPIRE_TIME);
+            jedisClientPool.set(USER_ACTIVE_ID+":"+user.getId(),code);
+            jedisClientPool.expire(USER_ACTIVE_ID+":"+user.getId(),USER_ACTIVE_CODE_EXPIRE_TIME);
 
             try {
                 //发送一封激活邮件
-                mailUtil.activeUser(user.getEmail(),auto_id,code);
+                mailUtil.activeUser(user.getEmail(),user.getId(),code);
             } catch (Exception e) {
                 e.printStackTrace();
                 logger.error("send user active code error,the userId:%d,the cause:%s",auto_id,e.getCause());
@@ -110,9 +110,9 @@ public class UserServiceImpl implements UserService {
         }else if(!code.equals(realCode)){
             return new Result(false,"验证码错误！");
         }else{
-//            userMapper.updateUserState(id,1);
+            userMapper.updateUserState(id,1);
         }
 
-        return new Result(true);
+        return new Result(true,"验证码激活成功！");
     }
 }

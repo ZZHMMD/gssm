@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Gradle : com.demo : gssm.war">
+    <output-path>$PROJECT_DIR$/build/libs</output-path>
+    <properties id="gradle-properties">
+      <options external-project-path="$PROJECT_DIR$" />
+    </properties>
+    <root id="archive" name="gssm.war">
+      <element id="artifact" artifact-name="Gradle : com.demo : gssm.war (exploded)" />
+    </root>
+  </artifact>
+</component>

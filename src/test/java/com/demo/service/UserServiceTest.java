@@ -1,5 +1,6 @@
 package com.demo.service;
 
+import com.demo.mapper.UserMapper;
 import com.demo.pojo.User;
 import com.demo.util.JedisClientPool;
 import org.junit.Test;
@@ -19,6 +20,9 @@ public class UserServiceTest {
    @Resource
    private UserService userService;
 
+   @Resource
+   private UserMapper userMapper;
+
     @Test
     public void login() {
     }
@@ -37,7 +41,10 @@ public class UserServiceTest {
         user.setNickname("小红");
         user.setTel("15160000933");
 
-        userService.insertUser(user);
+        System.out.println("插入之前:"+user.getId());
+        int auto_id=userMapper.insert(user);
+        System.out.println("插入返回值:"+auto_id);
+        System.out.println("插入之后:"+user.getId());
 
     }
 
